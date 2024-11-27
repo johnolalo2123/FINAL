@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LIBRARY MO KUYSSS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      color: #333;
+      line-height: 1.6;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background-color: rgba(44, 62, 80, 0.8);
+      color: #fff;
+      padding: 50px 0;
+      text-align: center;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 3.5em;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+      font-weight: lighter;
+    }
+
+    nav {
+      background-color: rgba(52, 152, 219, 0.9);
+      padding: 15px 0;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    nav ul li {
+      display: inline;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 1.1em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #f39c12;
+    }
+
+    .container {
+      width: 85%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    #manga-list {
+      padding: 50px 0;
+      text-align: center;
+    }
+
+    .manga-items {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .manga-item {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .manga-item iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+    }
+
+    footer {
+      background-color: rgba(44, 62, 80, 0.8);
+      color: #fff;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 1em;
+      box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #upload-section {
+      margin-top: 50px;
+    }
+
+    #captcha {
+      margin-top: 20px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>LIBRARY MO KUYSSS</h1>
+    <p>Your Manga Collection</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#manga-list">Manga List</a></li>
+      <li><a href="#upload-section">Upload Manga</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <section id="manga-list">
+      <h2>Available Manga</h2>
+      <div id="manga-items" class="manga-items">
+        <div class="manga-item">
+          <iframe src="https://drive.google.com/file/d/1oh9oVlgzghm3OeX8DCHz2WC2obuVkH3u/preview" frameborder="0"></iframe>
+        </div>
+        <div class="manga-item">
+          <iframe src="https://drive.google.com/file/d/1VZz_2hZ8sz3fix3tBhKDfKP35xlymrcJ/preview" frameborder="0"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="upload-section">
+      <h2>Upload Your Manga</h2>
+      <form id="upload-form">
+        <label for="manga-title">Manga Title:</label><br>
+        <input type="text" id="manga-title" name="manga-title" required><br><br>
+
+        <label for="manga-description">Description:</label><br>
+        <textarea id="manga-description" name="manga-description" required></textarea><br><br>
+
+        <label for="manga-link">Google Drive Link:</label><br>
+        <input type="text" id="manga-link" name="manga-link" required><br><br>
+
+        <div id="captcha" class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div><br><br>
+
+        <button type="submit">Upload Manga</button>
+      </form>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 LIBRARY MO KUYSSS. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    function setCookie(name, value, days) {
+      const d = new Date();
+      d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+      const expires = "expires=" + d.toUTCString();
+      document.cookie = name + "=" + value + ";" + expires + ";path=/";
+    }
+
+    function getCookie(name) {
+      const nameEQ = name + "=";
+      const ca = document.cookie.split(';');
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+      }
+      return null;
+    }
+
+    function applyTheme() {
+      const theme = getCookie("theme");
+      if (theme) {
+        document.body.style.backgroundColor = theme === "dark" ? "#333" : "#fff";
+        document.body.style.color = theme === "dark" ? "#fff" : "#333";
+      }
+    }
+
+    function toggleTheme() {
+      const currentTheme = getCookie("theme");
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+      setCookie("theme", newTheme, 7);
+      applyTheme();
+    }
+
+    applyTheme(); 
+
+    document.getElementById('upload-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      
+      const mangaTitle = document.getElementById('manga-title').value;
+      const mangaDescription = document.getElementById('manga-description').value;
+      const mangaLink = document.getElementById('manga-link').value;
+      const recaptchaResponse = grecaptcha.getResponse();
+
+      if (recaptchaResponse.length === 0) {
+        alert("Please complete the CAPTCHA.");
+        return;
+      }
+
+      if (!mangaLink) {
+        alert("Please provide a Google Drive link.");
+        return;
+      }
+
+      alert("Manga link submitted successfully!");
+    });
+
+    // Example of toggling theme
+    setTimeout(() => {
+      toggleTheme(); 
+    }, 3000);
+  </script>
+
+</body>
+</html>
